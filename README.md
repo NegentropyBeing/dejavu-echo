@@ -2,7 +2,7 @@
 
 > Twitch Links → Discord, com uma janela em vez do terminal
 
-Este é o **port para aplicativo de desktop** do `dejavu-echo` -- também de minha autoria -- que era um projeto de chronicler para links de chat que foi feito em em node.js. O programa é o
+Este é o **port para aplicativo de desktop** do `dejavu-echo` -- também de minha autoria -- que era um projeto de chronicler para links de chat enviados por chat da twitch que foi feito em em node.js. O programa é o
 mesmo: lê o chat de uma live da Twitch e envia para um canal do Discord os
 **links** que passarem por um filtro. A diferença é que ele tem uma interface
 gráfica — nada de terminal, `docker compose` ou instalação do Node.js por quem
