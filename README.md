@@ -222,12 +222,7 @@ cargo fmt --check
 
 ## Reconhecimentos
 
-Este aplicativo é um port para desktop do projeto original **`dejavu-echo`**
-(Node.js + Docker, também de minha autoria), que serve de referência. O
-comportamento do filtro, o formato das mensagens e os padrões da configuração
-vêm dele.
-
-Além disso, ele se apoia em vários projetos de código aberto:
+Este aplicativo se apoia em vários projetos de código aberto:
 
 - **[twitch-irc](https://github.com/robotty/twitch-irc-rs)** (por robotty) — é o
   coração da leitura do chat. É a biblioteca que se conecta ao IRC da Twitch de
