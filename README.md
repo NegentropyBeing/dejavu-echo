@@ -2,11 +2,12 @@
 
 > Twitch Links → Discord, com uma janela em vez do terminal
 
-Este é o **port para aplicativo de desktop** do `dejavu-echo` -- também de minha autoria -- que era um projeto de chronicler para links de chat enviados por chat da twitch que foi feito em em node.js. O programa é o
-mesmo: lê o chat de uma live da Twitch e envia para um canal do Discord os
-**links** que passarem por um filtro. A diferença é que ele tem uma interface
-gráfica — nada de terminal, `docker compose` ou instalação do Node.js por quem
-vai usar.
+Este é o **port para aplicativo de desktop** do `dejavu-echo` — um projeto
+também de minha autoria, feito em Node.js, que lia links enviados no chat da
+Twitch e os repassava. O programa faz o mesmo: lê o chat de uma live da Twitch e
+envia para um canal do Discord os **links** que passarem por um filtro. A
+diferença é que agora ele tem uma interface gráfica — nada de terminal,
+`docker compose` ou instalação do Node.js por quem vai usar.
 
 O programa foi reescrito em **Rust** (núcleo) com **Tauri 2** e uma tela em
 **React + TypeScript**.
@@ -217,5 +218,33 @@ cargo fmt --check
     └── Cargo.toml               # dependências do núcleo
 ```
 
-Este projeto foi baseado na versão original (Node.js e Docker), mantida em
-`../dejavu-echo` como referência.
+---
+
+## Reconhecimentos
+
+Este aplicativo é um port para desktop do projeto original **`dejavu-echo`**
+(Node.js + Docker, também de minha autoria), que serve de referência. O
+comportamento do filtro, o formato das mensagens e os padrões da configuração
+vêm dele.
+
+Além disso, ele se apoia em vários projetos de código aberto:
+
+- **[twitch-irc](https://github.com/robotty/twitch-irc-rs)** (por robotty) — é o
+  coração da leitura do chat. É a biblioteca que se conecta ao IRC da Twitch de
+  forma **anônima**, sem conta nem token, e entrega as mensagens já com badges,
+  tags e informações de resposta.
+- **[Tauri](https://tauri.app/)** — cria a janela do aplicativo e liga a tela ao
+  núcleo em Rust, usando o WebView2 já presente no Windows.
+- **[React](https://react.dev/)** e **[TypeScript](https://www.typescriptlang.org/)**
+  — a interface (abas Conexão, Filtro e Registro).
+- **[Vite](https://vitejs.dev/)** — empacotador da tela.
+- **[Tokio](https://tokio.rs/)** — runtime assíncrono que roda o motor e a fila de envio.
+- **[reqwest](https://github.com/seanmonstar/reqwest)** — cliente HTTP que valida e
+  envia os webhooks ao Discord (com [rustls](https://github.com/rustls/rustls) para TLS).
+- **[serde](https://serde.rs/)/[serde_json](https://github.com/serde-rs/json)** —
+  configuração, segredos e a API do Discord.
+- **[regex](https://github.com/rust-lang/regex)**, **[url](https://github.com/servo/rust-url)**
+  e **[chrono](https://github.com/chronotope/chrono)** — detecção de links,
+  normalização de domínios e horários do registro.
+
+Um agradecimento especial às pessoas mantenedoras desses projetos.
